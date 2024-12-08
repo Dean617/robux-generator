@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robux Generator</title>
+  <link rel="icon" type="image/png" href="robux.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
 
+    h1 {
+      font-size: 24px;
+    }
+
+    .robux-images {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .robux-images img {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+    }
+
+    .output {
+      font-size: 20px;
+      margin-top: 20px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Robux Generated!</h1>
+  <div class="robux-images">
+    <!-- Placeholder for robux.png images -->
+    <img src="robux.png" alt="Robux logo">
+    <img src="robux.png" alt="Robux logo">
+    <img src="robux.png" alt="Robux logo">
+    <img src="robux.png" alt="Robux logo">
+    <img src="robux.png" alt="Robux logo">
+  </div>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    // Get the Robux amount from the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const robux = urlParams.get('robux');
+    const output = document.getElementById('output');
+    
+    if (robux) {
+      output.innerHTML = `Successfully generated ${robux} Robux!`;
+    } else {
+      output.innerHTML = "Invalid Robux amount.";
+    }
+  </script>
+</body>
+</html>
