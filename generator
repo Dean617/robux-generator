@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fake Robux Generator</title>
+  <title>Robux Generator</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -37,7 +37,7 @@
       font-size: 18px;
       color: green;
     }
-    .ad {
+    .ad-box {
       margin: 20px auto;
       width: 300px;
       height: 250px;
@@ -47,12 +47,13 @@
       line-height: 250px;
       font-size: 16px;
       color: #666;
+      overflow: hidden;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Fake Robux Generator</h1>
+    <h1>Robux Generator</h1>
     <p>Enter your desired Robux amount below and click "Generate".</p>
     
     <!-- Input field and button -->
@@ -62,9 +63,16 @@
     <!-- Output message -->
     <div class="output" id="output"></div>
     
-    <!-- Advertisement Placeholder -->
-    <div class="ad">
-      <p>Your Ad Here</p>
+    <!-- AdSense-ready Advertisement Box -->
+    <div class="ad-box">
+      <!-- Place your Google AdSense code here -->
+      <p>Ad space available</p>
+    </div>
+
+    <!-- Another Ad Box -->
+    <div class="ad-box">
+      <!-- Example: Add another AdSense block here -->
+      <p>Second Ad Slot</p>
     </div>
   </div>
   
@@ -72,15 +80,19 @@
     function generateRobux() {
       const robux = document.getElementById('robuxAmount').value;
       const output = document.getElementById('output');
-      
+
+      // Validate input
+      if (!robux || robux <= 0 || robux > 1000000) {
+        output.style.color = "red";
+        output.innerHTML = "Please enter a valid Robux amount (1 - 1,000,000).";
+        return;
+      }
+
       // Simulate fake loading with a delay
+      output.style.color = "green";
       output.innerHTML = "Generating Robux... Please wait.";
       setTimeout(() => {
-        if (robux && robux > 0) {
-          output.innerHTML = `Successfully generated ${robux} Robux!`;
-        } else {
-          output.innerHTML = "Please enter a valid amount.";
-        }
+        output.innerHTML = `Successfully generated ${robux} Robux! Enjoy!`;
       }, 2000); // 2-second delay for effect
     }
   </script>
