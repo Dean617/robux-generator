@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Robux Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      padding: 20px;
+      margin-top: 50px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .output {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+    }
+    .ad {
+      margin: 20px auto;
+      width: 300px;
+      height: 250px;
+      background-color: #f3f3f3;
+      border: 1px solid #ccc;
+      text-align: center;
+      line-height: 250px;
+      font-size: 16px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Fake Robux Generator</h1>
+    <p>Enter your desired Robux amount below and click "Generate".</p>
+    
+    <!-- Input field and button -->
+    <input type="number" id="robuxAmount" placeholder="Enter Robux amount">
+    <button onclick="generateRobux()">Generate Robux</button>
+    
+    <!-- Output message -->
+    <div class="output" id="output"></div>
+    
+    <!-- Advertisement Placeholder -->
+    <div class="ad">
+      <p>Your Ad Here</p>
+    </div>
+  </div>
+  
+  <script>
+    function generateRobux() {
+      const robux = document.getElementById('robuxAmount').value;
+      const output = document.getElementById('output');
+      
+      // Simulate fake loading with a delay
+      output.innerHTML = "Generating Robux... Please wait.";
+      setTimeout(() => {
+        if (robux && robux > 0) {
+          output.innerHTML = `Successfully generated ${robux} Robux!`;
+        } else {
+          output.innerHTML = "Please enter a valid amount.";
+        }
+      }, 2000); // 2-second delay for effect
+    }
+  </script>
+</body>
+</html>
