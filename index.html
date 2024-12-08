@@ -12,11 +12,16 @@
       color: #333;
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
     .container {
-      padding: 20px;
-      margin-top: 50px;
+      margin: 20px;
+      text-align: center;
     }
+
     input, button {
       padding: 10px;
       font-size: 16px;
@@ -24,35 +29,76 @@
       border: 1px solid #ccc;
       border-radius: 5px;
     }
+
     button {
       background-color: #4caf50;
       color: white;
       cursor: pointer;
     }
+
     button:hover {
       background-color: #45a049;
     }
+
     .output {
       margin-top: 20px;
       font-size: 18px;
       color: green;
     }
-    .ad-box {
-      margin: 20px auto;
-      width: 300px;
-      height: 250px;
+
+    .ad {
       background-color: #f3f3f3;
       border: 1px solid #ccc;
       text-align: center;
-      line-height: 250px;
       font-size: 16px;
       color: #666;
-      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .side-ads {
+      position: absolute;
+      top: 50px;
+      width: 150px;
+      height: 300px;
+    }
+
+    .side-ads.left {
+      left: 0;
+    }
+
+    .side-ads.right {
+      right: 0;
+    }
+
+    .bottom-ad {
+      width: 100%;
+      height: 100px;
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-content {
+      margin-top: 50px;
+      margin-bottom: 150px; /* To avoid overlap with the bottom ad */
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <!-- Left Side Ads -->
+  <div class="ad side-ads left">Ad Space 1</div>
+  <div class="ad side-ads left" style="top: 360px;">Ad Space 2</div>
+
+  <!-- Right Side Ads -->
+  <div class="ad side-ads right">Ad Space 3</div>
+  <div class="ad side-ads right" style="top: 360px;">Ad Space 4</div>
+
+  <!-- Main Content -->
+  <div class="container main-content">
     <h1>Robux Generator</h1>
     <p>Enter your desired Robux amount below and click "Generate".</p>
     
@@ -62,37 +108,24 @@
     
     <!-- Output message -->
     <div class="output" id="output"></div>
-    
-    <!-- AdSense-ready Advertisement Box -->
-    <div class="ad-box">
-      <!-- Place your Google AdSense code here -->
-      <p>Ad space available</p>
-    </div>
-
-    <!-- Another Ad Box -->
-    <div class="ad-box">
-      <!-- Example: Add another AdSense block here -->
-      <p>Second Ad Slot</p>
-    </div>
   </div>
-  
+
+  <!-- Bottom Ad -->
+  <div class="ad bottom-ad">Bottom Ad Space</div>
+
   <script>
     function generateRobux() {
       const robux = document.getElementById('robuxAmount').value;
       const output = document.getElementById('output');
-
-      // Validate input
-      if (!robux || robux <= 0 || robux > 1000000) {
-        output.style.color = "red";
-        output.innerHTML = "Please enter a valid Robux amount (1 - 1,000,000).";
-        return;
-      }
-
+      
       // Simulate fake loading with a delay
-      output.style.color = "green";
       output.innerHTML = "Generating Robux... Please wait.";
       setTimeout(() => {
-        output.innerHTML = `Successfully generated ${robux} Robux! Enjoy!`;
+        if (robux && robux > 0) {
+          output.innerHTML = `Successfully generated ${robux} Robux!`;
+        } else {
+          output.innerHTML = "Please enter a valid amount.";
+        }
       }, 2000); // 2-second delay for effect
     }
   </script>
