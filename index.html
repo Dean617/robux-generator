@@ -89,20 +89,6 @@
       margin-top: 50px;
       margin-bottom: 150px; /* To avoid overlap with the bottom ad */
     }
-
-    /* Add some styles for the robux images on the next page */
-    .robux-images {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .robux-images img {
-      width: 50px;
-      height: 50px;
-      margin: 5px;
-    }
   </style>
 </head>
 <body>
@@ -124,10 +110,15 @@
   <!-- Main Content -->
   <div class="container main-content">
     <h1>Robux Generator</h1>
-    <p>Enter your desired Robux amount below and click "Generate".</p>
+    <p>Enter your username and desired Robux amount below and click "Generate".</p>
     
-    <!-- Input field and button -->
+    <!-- Username input -->
+    <input type="text" id="username" placeholder="Enter your username">
+    
+    <!-- Robux input -->
     <input type="number" id="robuxAmount" placeholder="Enter Robux amount">
+    
+    <!-- Button -->
     <button onclick="generateRobux()">Generate Robux</button>
     
     <!-- Output message -->
@@ -151,22 +142,23 @@
 
   <script>
     function generateRobux() {
+      const username = document.getElementById('username').value;
       const robux = document.getElementById('robuxAmount').value;
       const output = document.getElementById('output');
       
       // Simulate fake loading with a delay of 10 seconds
       output.innerHTML = "Generating Robux... Please wait.";
       setTimeout(() => {
-        if (robux && robux > 0) {
-          output.innerHTML = `Successfully generated ${robux} Robux!`;
+        if (username && robux && robux > 0) {
+          output.innerHTML = `Successfully generated ${robux} Robux for user "${username}"!`;
           // After 5 seconds, redirect to a new page with robux images
           setTimeout(() => {
             // Create a new URL for the generated Robux page (you can replace this with a real URL)
-            const newPage = `robuxGenerated.html?robux=${robux}`;
+            const newPage = `robuxGenerated.html?username=${encodeURIComponent(username)}&robux=${robux}`;
             window.location.href = newPage;
           }, 5000); // 5-second delay before redirection
         } else {
-          output.innerHTML = "Please enter a valid amount.";
+          output.innerHTML = "Please enter a valid username and amount.";
         }
       }, 10000); // 10-second delay for generating Robux
     }
